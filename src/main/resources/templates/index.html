@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>ReactJS + Spring Data REST</title>
+    <link th:href="@{./dist/css/tabulator.min.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{./dist/js/tabulator.min.js}"></script>
+</head>
+<body>
+
+    <div>
+        <button id="add-row">Add Blank Row to bottom</button>
+        <button id="del-row">Remove Row "Oli Bob"</button>
+        <button id="add-col">Add Blank Column to right</button>
+        <button id="del-col">Delete column</button>
+        <button id="clear">Empty the table</button>
+        <button id="reset">Reset</button>
+    </div>
+    
+    <div id="example-table"></div>
+<div id="example-table"></div>
+
+<script>
+var i = 3;
+var iRow = 0;
+
+//For test
+var tabledata = [
+ 	{id:0, "0":"Mysql", "1":"Hibernate", "2":"REST"},
+ 	{id:1, "0":"Oracle", "1":"H2", "2":"RWI"}
+ ];
+
+//Build Tabulator
+var table = new Tabulator("#example-table", {
+    height:"311px",
+    addRowPos:"bottom",
+    data:tabledata,
+    columns:[
+        {title:"0", field:"0", width:200, editor:"input"},
+        {title:"1", field:"1", width:200, editor:"input"},
+        {title:"2", field:"2", width:200, editor:"input"}
+    ],
+});
+
+
+
+//Add row on "Add Row" button click
+document.getElementById("add-row").addEventListener("click", function(){
+    table.addRow({id: iRow});
+    iRow++;
+});
+
+//Delete row on "Delete Row" button click
+document.getElementById("del-row").addEventListener("click", function(){
+    table.deleteRow(iRow-1);
+    iRow--;
+});
+
+//Add Column on "Add Column" button click
+document.getElementById("add-col").addEventListener("click", function(){
+    var name = i.toString();
+    table.addColumn({title: name, field:name, width:200, editor:"input"});
+    i++;
+});
+
+//Delete row on "Delete Col" button click
+document.getElementById("del-col").addEventListener("click", function(){
+    var a = i-1
+    var name = a.toString();
+    table.deleteColumn(name);
+    i--;
+});
+
+//Clear table on "Empty the table" button click
+document.getElementById("clear").addEventListener("click", function(){
+    table.clearData()
+});
+
+//Reset table contents on "Reset the table" button click
+document.getElementById("reset").addEventListener("click", function(){
+    table.setData(tabledata);
+});
+
+</script>
+
+
+
+
+<script th:src="@{./js/table.js}"></script>
+
+</body>
+</html>
