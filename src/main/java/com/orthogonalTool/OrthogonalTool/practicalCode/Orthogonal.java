@@ -1,4 +1,4 @@
-package com.orthogonalTool.OrthogonalTool.math;
+package com.orthogonalTool.OrthogonalTool.practicalCode;
 public class Orthogonal {
 
     public void createOrthogonal(long values, long factors){

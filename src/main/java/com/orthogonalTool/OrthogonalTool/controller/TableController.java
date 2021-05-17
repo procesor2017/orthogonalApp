@@ -4,6 +4,10 @@ package com.orthogonalTool.OrthogonalTool.controller;
 import com.orthogonalTool.OrthogonalTool.matrix.TwoOnX;
 import com.orthogonalTool.OrthogonalTool.matrixCSV.CsvReader;
 import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
+import com.orthogonalTool.OrthogonalTool.practicalCode.JsonReader;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
+import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +22,9 @@ public class TableController {
     @Autowired
     TwoOnX twoOnX;
 
+    @Autowired
+    JsonReader jsonReader;
+
 
     //http://localhost:8080/table/0&4&3
     @GetMapping("/table/{rowStart}&{rowEnd}&{column}")
@@ -25,24 +32,9 @@ public class TableController {
         return csvReader.returnCsvTable("src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", rowStart,rowEnd, column);
     }
 
-    //http://localhost:8080/table/try
-    @GetMapping("/table/try")
-    OrthogonalTable newTry() {
-        String myArr[][] = new String[4][3];
-        myArr[0][0] = "Oracle";
-        myArr[1][0] = "MySqlite";
-
-        myArr[0][1] = "Hybernate";
-        myArr[1][1] = "JPA";
-
-        myArr[0][2] = "Rest";
-        myArr[1][2] = "rwi";
-
-        return twoOnX.twoOnThree(myArr);
-    }
-
     @PostMapping("/table/tryReact")
-    public OrthogonalTable get2onXTable(@RequestParam(value = "myArr[][]") String [][] myArr){
-        return twoOnX.twoOnThree(myArr);
+    public OrthogonalTable get2onXTable(@RequestBody JSONArray myArr) throws Exception {
+        return twoOnX.twoOnThree(jsonReader.getTableFromJson(myArr));
+        //return twoOnX.twoOnThree(myArr);
     }
 }

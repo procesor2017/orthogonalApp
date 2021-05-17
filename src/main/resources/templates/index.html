@@ -10,24 +10,26 @@
 
     <div>
         <button id="add-row">Add Blank Row to bottom</button>
-        <button id="del-row">Remove Row "Oli Bob"</button>
         <button id="add-col">Add Blank Column to right</button>
         <button id="del-col">Delete column</button>
         <button id="clear">Empty the table</button>
         <button id="reset">Reset</button>
     </div>
     
-    <div id="example-table"></div>
 <div id="example-table"></div>
+
+<button onclick="sendData()">Send Data</button></p></p></p>
+<textarea id="Response">response</textarea>
+
 
 <script>
 var i = 3;
-var iRow = 0;
+
 
 //For test
 var tabledata = [
- 	{id:0, "0":"Mysql", "1":"Hibernate", "2":"REST"},
- 	{id:1, "0":"Oracle", "1":"H2", "2":"RWI"}
+ 	{"0":"Mysql", "1":"Hibernate", "2":"REST"},
+ 	{"0":"Oracle", "1":"H2", "2":"RWI"}
  ];
 
 //Build Tabulator
@@ -46,14 +48,7 @@ var table = new Tabulator("#example-table", {
 
 //Add row on "Add Row" button click
 document.getElementById("add-row").addEventListener("click", function(){
-    table.addRow({id: iRow});
-    iRow++;
-});
-
-//Delete row on "Delete Row" button click
-document.getElementById("del-row").addEventListener("click", function(){
-    table.deleteRow(iRow-1);
-    iRow--;
+    table.addRow({});
 });
 
 //Add Column on "Add Column" button click
@@ -80,6 +75,25 @@ document.getElementById("clear").addEventListener("click", function(){
 document.getElementById("reset").addEventListener("click", function(){
     table.setData(tabledata);
 });
+
+async function sendData() {
+    const data = table.getData();
+    const url = '/table/tryReact';
+    const fetchOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  };
+  const res = await fetch(url, fetchOptions);
+  const ret = await res.text();
+
+
+  document.getElementById("Response").value = ret; 
+}
+
+
 
 </script>
 

@@ -1,19 +1,20 @@
 package com.orthogonalTool.OrthogonalTool.matrix;
 
-import com.orthogonalTool.OrthogonalTool.math.Orthogonal;
 import com.orthogonalTool.OrthogonalTool.matrixCSV.CsvReader;
 import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 @Component
 public class TwoOnX {
-    public OrthogonalTable twoOnThree(String myArr[][]) {
+    public OrthogonalTable twoOnThree(OrthogonalTable orthogonalTable) {
         CsvReader csvReader = new CsvReader();
         OrthogonalTable o = new OrthogonalTable();
         String tableWithValue[][] = new String[4][3];
         OrthogonalTable backTable = new OrthogonalTable();
+        String[][] myArr = orthogonalTable.getWithValueTable();
 
 
         String row0col0 =myArr[0][0]; // 0
