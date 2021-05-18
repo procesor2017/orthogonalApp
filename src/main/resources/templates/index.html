@@ -20,7 +20,8 @@
 
 <button onclick="sendData()">Send Data</button></p></p></p>
 <textarea id="Response">response</textarea>
-
+</p></p></p>
+<div id="results-table"></div>
 
 <script>
 var i = 3;
@@ -44,7 +45,8 @@ var table = new Tabulator("#example-table", {
     ],
 });
 
-
+//Build others table
+var resTable = new Tabulator("#results-table", {});
 
 //Add row on "Add Row" button click
 document.getElementById("add-row").addEventListener("click", function(){
@@ -76,9 +78,13 @@ document.getElementById("reset").addEventListener("click", function(){
     table.setData(tabledata);
 });
 
+// Send data
 async function sendData() {
+    var idRow = 0;
+    var nameCol = 0;
+
     const data = table.getData();
-    const url = '/table/tryReact';
+    const url = '/table/2on3';
     const fetchOptions = {
     method: 'POST',
     headers: {
@@ -87,13 +93,27 @@ async function sendData() {
     body: JSON.stringify(data)
   };
   const res = await fetch(url, fetchOptions);
-  const ret = await res.text();
+  const ret = await res.json();
 
-
-  document.getElementById("Response").value = ret; 
+  //Get data to table
+  
+  table.addRow({});
+  document.getElementById("Response").value = ret.withValueTable[0].length;
+  for(var r=0;r<ret.withValueTable.length;r++){
+        resTable.addRow({id:r, title:idRow.toString()})
+        if (r==0){
+            for(var s=0; s<ret.withValueTable[0].length; s++){
+                resTable.addColumn({title:s.toString(), field:s.toString()});
+            }
+        }
+        for(var t=0; t<ret.withValueTable[r].length; t++){
+            var nameColInS = t.toString();
+            resTable.updateData([{id:t, nameColInS:ret.withValueTable[r][t]}])
+            
+        }
+        idRow++;
+    }
 }
-
-
 
 </script>
 

@@ -9,10 +9,10 @@ import java.util.HashMap;
 
 @Component
 public class JsonReader {
-    public OrthogonalTable getTableFromJson(JSONArray jsonArray) throws Exception {
+    public OrthogonalTable getTableFromJson(JSONArray jsonArray, int column){
         OrthogonalTable orthogonalTable = new OrthogonalTable();
         try {
-            String[][] ints1 = new String[jsonArray.size()][3];
+            String[][] ints1 = new String[jsonArray.size()][column];
             for (int i = 0; i < jsonArray.size(); i++) {
                 HashMap<String, String> hashMap = (HashMap<String, String>) jsonArray.get(i);
                 Object[] arr = hashMap.values().toArray();

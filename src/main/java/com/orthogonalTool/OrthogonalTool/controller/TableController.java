@@ -32,37 +32,15 @@ public class TableController {
         return csvReader.returnCsvTable("src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", rowStart,rowEnd, column);
     }
 
-    @PostMapping("/table/tryReact")
-    public OrthogonalTable get2onXTable(@RequestBody JSONArray myArr) throws Exception {
-        return twoOnX.twoOnThree(jsonReader.getTableFromJson(myArr));
-        //return twoOnX.twoOnThree(myArr);
+    @PostMapping("/table/2on3")
+    public OrthogonalTable get2onXTable(@RequestBody JSONArray myArr){
+        return twoOnX.twoOnThree(jsonReader.getTableFromJson(myArr, 3));
     }
 
     //http://localhost:8080/table/tryNewTable
-    @GetMapping("/table/tryNewTable")
-    public OrthogonalTable getNewTable() throws IOException {
-        String myArr[][] = new String[4][5];
-        myArr[0][0] = "Oracle";
-        myArr[1][0] = "MySqlite";
-
-        myArr[0][1] = "Hybernate";
-        myArr[1][1] = "JPA";
-
-        myArr[0][2] = "Rest";
-        myArr[1][2] = "rwi";
-
-        myArr[0][3] = "Rest1";
-        myArr[1][3] = "rwi1";
-
-        myArr[0][4] = "a";
-        myArr[1][4] = "b";
-        myArr[2][4] = "c";
-        myArr[3][4] = "d";
-
-        OrthogonalTable orthogonalTable = new OrthogonalTable();
-        orthogonalTable.setWithValueTable(myArr);
-
-        return twoOnX.twoOnFourAndOneOnFour(orthogonalTable);
+    @GetMapping("/table/2on3&1on4")
+    public OrthogonalTable getNewTable(@RequestBody JSONArray myArr) {
+        return twoOnX.twoOnFourAndOneOnFour(jsonReader.getTableFromJson(myArr, 5));
 
     }
 
