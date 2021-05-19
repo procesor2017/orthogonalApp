@@ -80,39 +80,37 @@ document.getElementById("reset").addEventListener("click", function(){
 
 // Send data
 async function sendData() {
-    var idRow = 0;
-    var nameCol = 0;
-
     const data = table.getData();
     const url = '/table/2on3';
     const fetchOptions = {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
-    },
+        },
     body: JSON.stringify(data)
-  };
-  const res = await fetch(url, fetchOptions);
-  const ret = await res.json();
+    };
 
-  //Get data to table
-  
-  table.addRow({});
-  document.getElementById("Response").value = ret.withValueTable[0].length;
-  for(var r=0;r<ret.withValueTable.length;r++){
-        resTable.addRow({id:r, title:idRow.toString()})
-        if (r==0){
-            for(var s=0; s<ret.withValueTable[0].length; s++){
-                resTable.addColumn({title:s.toString(), field:s.toString()});
+    const res = await fetch(url, fetchOptions);
+    const ret = await res.json();
+
+    //Get data to table
+    
+    table.addRow({});
+    document.getElementById("Response").value = ret.withValueTable[0].length;
+    var cellNumber = 0;
+    var cellNumber1 = 0;
+    
+    for(var r=0;r<ret.withValueTable.length;r++){
+            resTable.addRow({id:r});
+            if (r==0){
+                for(var s=0; s<ret.withValueTable[0].length; s++){
+                    resTable.addColumn({title:s.toString(), field:cellNumber.toString()});
+                    cellNumber++;
+                }
             }
-        }
-        for(var t=0; t<ret.withValueTable[r].length; t++){
-            var nameColInS = t.toString();
-            resTable.updateData([{id:t, nameColInS:ret.withValueTable[r][t]}])
-            
-        }
-        idRow++;
     }
+    resTable.setData(ret.withValueTable)
+  
 }
 
 </script>
