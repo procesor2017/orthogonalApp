@@ -1,6 +1,9 @@
 package com.orthogonalTool.OrthogonalTool.model;
 
-import java.util.Arrays;
+import org.springframework.stereotype.Component;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class OrthogonalTable {
     private int row;
@@ -8,10 +11,6 @@ public class OrthogonalTable {
 
     private int poorTable[][];
     private String withValueTable[][];
-
-
-
-
 
 
     public int getRow() {
@@ -66,4 +65,42 @@ public class OrthogonalTable {
                 "poorTable=" + Arrays.deepToString(poorTable) +
                 '}';
     }
+
+    public List<Integer> getTableType(){
+        int numbersOfRows = withValueTable.length;
+        int numbersOfCol = withValueTable[0].length;
+        List<Integer> valuesInRows = new ArrayList<>();
+        List<Integer> finalValues = new ArrayList<>();
+        int valueNumber = 0;
+
+
+        for(int i = 0; i<numbersOfCol; i++){
+            int countRow = 0;
+            for(int j = 0; j<numbersOfRows; j++){
+                if(withValueTable[j][i] != null){
+                    countRow++;
+                }
+            }
+            if (countRow != 0){
+                valuesInRows.add(countRow);
+            }
+        }
+
+        Integer[] arr = new Integer[valuesInRows.size()];
+        valuesInRows.toArray(arr);
+
+        Collections.sort(valuesInRows);
+
+        Arrays.stream(arr)
+                .collect(Collectors.groupingBy(s -> s))
+                .forEach((k, v) -> {
+                    finalValues.add(k);
+                    finalValues.add(v.size());
+                });//System.out.println(k+" "+v.size()));
+        System.out.println(finalValues);
+        return finalValues;
+    }
+
+
 }
+
