@@ -1,5 +1,16 @@
 package com.orthogonalTool.OrthogonalTool.practicalCode;
+
+import com.orthogonalTool.OrthogonalTool.matrix.TwoOnX;
+import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
+import net.minidev.json.JSONArray;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+@Component
 public class Orthogonal {
+    TwoOnX twoOnX;
+    JsonReader jsonReader;
 
     public void createOrthogonal(long values, long factors){
         // zápis 2^3 určí že 3 sloupečky (faktory) mají pokaždé 2 hodnoty
@@ -32,7 +43,26 @@ public class Orthogonal {
         return fact;
     }
 
-
+    public OrthogonalTable chooseOrthogonalTable(List<Integer> valueList, JSONArray myArr){
+        OrthogonalTable o = new OrthogonalTable();
+        int i = 0;
+        try {
+            if (valueList.size() <= 2) {
+                if (valueList.get(i) <= 2 && valueList.get(i + 1) <= 3) {
+                    return twoOnX.twoOnThree(jsonReader.getTableFromJson(myArr, 3));
+                }
+            } else if (valueList.size() == 4) {
+                if (valueList.get(i) <= 2 && valueList.get(i + 1) <= 4) {
+                    if (valueList.get(i + 2) <= 2 && valueList.get(i + 3) <= 4) {
+                        return twoOnX.twoOnFourAndOneOnFour(jsonReader.getTableFromJson(myArr, 5));
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return o;
+    }
 
 
 }

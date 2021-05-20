@@ -5,6 +5,7 @@ import com.orthogonalTool.OrthogonalTool.matrix.TwoOnX;
 import com.orthogonalTool.OrthogonalTool.matrixCSV.CsvReader;
 import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
 import com.orthogonalTool.OrthogonalTool.practicalCode.JsonReader;
+import com.orthogonalTool.OrthogonalTool.practicalCode.Orthogonal;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import netscape.javascript.JSObject;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class TableController {
@@ -24,6 +26,9 @@ public class TableController {
 
     @Autowired
     JsonReader jsonReader;
+
+    @Autowired
+    Orthogonal orthogonal;
 
 
     //http://localhost:8080/table/0&4&3
@@ -42,6 +47,14 @@ public class TableController {
     public OrthogonalTable getNewTable(@RequestBody JSONArray myArr) {
         return twoOnX.twoOnFourAndOneOnFour(jsonReader.getTableFromJson(myArr, 5));
     }
+
+    @GetMapping("/table/tryToFind")
+    public String tryToFindBestTable(@RequestBody JSONArray myArr) {
+        orthogonal.chooseOrthogonalTable(jsonReader.getTableFromJson(myArr, 5).getTableType(), myArr);
+        return "index";
+    }
+
+
 
     //http://localhost:8080/table/tryNewTable
     @GetMapping("/table/MoltenCore")
