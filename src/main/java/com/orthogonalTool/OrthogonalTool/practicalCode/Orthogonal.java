@@ -9,9 +9,6 @@ import java.util.List;
 
 @Component
 public class Orthogonal {
-    TwoOnX twoOnX;
-    JsonReader jsonReader;
-
     public void createOrthogonal(long values, long factors){
         // zápis 2^3 určí že 3 sloupečky (faktory) mají pokaždé 2 hodnoty
         long idealTestPlan = (long) Math.pow(values, factors); //Ideální množství všech Test plánů
@@ -44,7 +41,10 @@ public class Orthogonal {
     }
 
     public OrthogonalTable chooseOrthogonalTable(List<Integer> valueList, JSONArray myArr){
+        //TODO: Předělat pak na cyklus který projde list ve kterém porovná value list s tabulkama které mám a pak podle výsledné hodnoty bude jen switch
         OrthogonalTable o = new OrthogonalTable();
+        JsonReader jsonReader = new JsonReader();
+        TwoOnX twoOnX = new TwoOnX();
         int i = 0;
         try {
             if (valueList.size() <= 2) {
@@ -53,7 +53,7 @@ public class Orthogonal {
                 }
             } else if (valueList.size() == 4) {
                 if (valueList.get(i) <= 2 && valueList.get(i + 1) <= 4) {
-                    if (valueList.get(i + 2) <= 2 && valueList.get(i + 3) <= 4) {
+                    if (valueList.get(i + 2) <= 4 && valueList.get(i + 3) <= 1) {
                         return twoOnX.twoOnFourAndOneOnFour(jsonReader.getTableFromJson(myArr, 5));
                     }
                 }

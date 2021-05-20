@@ -10,6 +10,7 @@ import java.util.HashMap;
 @Component
 public class JsonReader {
     public OrthogonalTable getTableFromJson(JSONArray jsonArray, int column){
+        System.out.println("==================");
         OrthogonalTable orthogonalTable = new OrthogonalTable();
         try {
             String[][] ints1 = new String[jsonArray.size()][column];

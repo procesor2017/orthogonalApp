@@ -94,8 +94,8 @@ public class OrthogonalTable {
         Arrays.stream(arr)
                 .collect(Collectors.groupingBy(s -> s))
                 .forEach((k, v) -> {
-                    finalValues.add(v.size());
                     finalValues.add(k);
+                    finalValues.add(v.size());
                 });//System.out.println(k+" "+v.size()));
         System.out.println(finalValues);
         return finalValues;

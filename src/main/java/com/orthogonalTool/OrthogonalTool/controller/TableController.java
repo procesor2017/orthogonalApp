@@ -48,10 +48,11 @@ public class TableController {
         return twoOnX.twoOnFourAndOneOnFour(jsonReader.getTableFromJson(myArr, 5));
     }
 
-    @GetMapping("/table/tryToFind")
-    public String tryToFindBestTable(@RequestBody JSONArray myArr) {
-        orthogonal.chooseOrthogonalTable(jsonReader.getTableFromJson(myArr, 5).getTableType(), myArr);
-        return "index";
+    @PostMapping("/table/tryToFind")
+    public OrthogonalTable tryToFindBestTable(@RequestBody JSONArray myArr) {
+        List<Integer> list = jsonReader.getTableFromJson(myArr, 5).getTableType();
+        return orthogonal.chooseOrthogonalTable(list, myArr);
+
     }
 
 

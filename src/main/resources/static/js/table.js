@@ -65,7 +65,7 @@ document.getElementById("reset-res").addEventListener("click", function(){
 // Send data
 async function sendData() {
     const data = table.getData();
-    const url = '/table/2on3';
+    const url = '/table/tryToFind';
     const fetchOptions = {
     method: 'POST',
     headers: {
