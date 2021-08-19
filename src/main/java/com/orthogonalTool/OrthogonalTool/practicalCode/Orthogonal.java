@@ -42,9 +42,14 @@ public class Orthogonal {
 
     public OrthogonalTable chooseOrthogonalTable(List<Integer> valueList, JSONArray myArr){
         //TODO: Předělat pak na cyklus který projde list ve kterém porovná value list s tabulkama které mám a pak podle výsledné hodnoty bude jen switch
+        // Value list je řádky, sloupečky
+        System.out.println("========== Start find OT for back to user new table =====================");
         OrthogonalTable o = new OrthogonalTable();
         JsonReader jsonReader = new JsonReader();
         TwoOnX twoOnX = new TwoOnX();
+        System.out.println("Value list is: " + valueList);
+        System.out.println("Value size is:" + valueList.size());
+
         int i = 0;
         try {
             if (valueList.size() <= 2) {
@@ -61,8 +66,7 @@ public class Orthogonal {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("=============  End fint OT =======================");
         return o;
     }
-
-
 }

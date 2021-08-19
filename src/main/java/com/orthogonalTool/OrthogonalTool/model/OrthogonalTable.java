@@ -10,7 +10,7 @@ public class OrthogonalTable {
     private int column;
 
     private int poorTable[][];
-    private String withValueTable[][];
+    private String withValueTable[][];  //Table with values from user
 
 
     public int getRow() {
@@ -67,11 +67,16 @@ public class OrthogonalTable {
     }
 
     public List<Integer> getTableType(){
+        System.out.println("========== Get table type ===============");
+        // Vrací počet řádků 
         int numbersOfRows = withValueTable.length;
         int numbersOfCol = withValueTable[0].length;
         List<Integer> valuesInRows = new ArrayList<>();
         List<Integer> finalValues = new ArrayList<>();
         int valueNumber = 0;
+
+        System.out.println(withValueTable.length);
+        System.out.println(withValueTable[0].length);
 
 
         for(int i = 0; i<numbersOfCol; i++){
@@ -97,7 +102,8 @@ public class OrthogonalTable {
                     finalValues.add(k);
                     finalValues.add(v.size());
                 });//System.out.println(k+" "+v.size()));
-        System.out.println(finalValues);
+        System.out.println("Final values: "+ finalValues);
+        System.out.println("=========================== End of Get table type ========================");
         return finalValues;
     }
 

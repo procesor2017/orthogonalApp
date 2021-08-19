@@ -19,6 +19,7 @@ import java.util.List;
 @Component
 public class CsvReader {
     public OrthogonalTable returnCsvTable(String pathToCsv, int rowStart, int rowEnd, int column) throws IOException {
+        System.out.println("===== Start work with CSV ==========");
         int lengRow = rowEnd - rowStart;
         int[][] myTable = new int[lengRow][column];
         System.out.println("Velikost tabulky je: " + lengRow + " a " + column);
@@ -45,6 +46,7 @@ public class CsvReader {
         csvReader.close();
         orthogonalTable.setPoorTable(myTable);
         orthogonalTable.showPoorTableInConsole();
+        System.out.println("============ END Work with CSV =============");
         return orthogonalTable;
     }
 
