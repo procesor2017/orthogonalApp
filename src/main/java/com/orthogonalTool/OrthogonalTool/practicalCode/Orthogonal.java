@@ -42,20 +42,25 @@ public class Orthogonal {
 
     public OrthogonalTable chooseOrthogonalTable(List<Integer> valueList, JSONArray myArr){
         //TODO: Předělat pak na cyklus který projde list ve kterém porovná value list s tabulkama které mám a pak podle výsledné hodnoty bude jen switch
-        // Value list je řádky, sloupečky
+        // Value list funguje jako array s hodnotami řádky, sloupečky, řádky, sloupečky etc.
         System.out.println("========== Start find OT for back to user new table =====================");
         OrthogonalTable o = new OrthogonalTable();
         JsonReader jsonReader = new JsonReader();
         TwoOnX twoOnX = new TwoOnX();
         System.out.println("Value list is: " + valueList);
-        System.out.println("Value size is:" + valueList.size());
+        System.out.println("Value size is:" + valueList.size());  //Počet hodnot v listu
 
         int i = 0;
         try {
+            //Rovnoměrná tabulka, prostě počet sloupečků s řádkama které jsou všechny zaplněný
             if (valueList.size() <= 2) {
                 if (valueList.get(i) <= 2 && valueList.get(i + 1) <= 3) {
                     return twoOnX.twoOnThree(jsonReader.getTableFromJson(myArr, 3));
+                }else if(valueList.get(i) <= 2 && valueList.get(i + 1) <= 11){
+                    return twoOnX.twoOnEleven(jsonReader.getTableFromJson(myArr,11));
                 }
+
+            //Peklo na zemi, jakmile má tabulka víc jak 2 hodnoty tak musí mít zákonitě víc faktoru...
             } else if (valueList.size() == 4) {
                 if (valueList.get(i) <= 2 && valueList.get(i + 1) <= 4) {
                     if (valueList.get(i + 2) <= 4 && valueList.get(i + 3) <= 1) {
