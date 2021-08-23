@@ -26,7 +26,8 @@ public class CsvReader {
         OrthogonalTable orthogonalTable = new OrthogonalTable();
         BufferedReader csvReader = new BufferedReader(new FileReader(pathToCsv));
         String row;
-        String[] tableWithRowFromCSV = new String[14];
+        //TODO předělat aby nenačítal celý csv
+        String[] tableWithRowFromCSV = new String[75]; //Načítá tupě celé csv
         int x = 0;
         while((row = csvReader.readLine()) != null){
             tableWithRowFromCSV[x] = row;

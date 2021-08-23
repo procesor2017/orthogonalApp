@@ -7,31 +7,41 @@ import java.io.IOException;
 
 @Component
 public class TwoOnX {
-    public OrthogonalTable twoOnThree(OrthogonalTable orthogonalTable) {
+
+    //TODO upravit vstupní parametry = poslední dva jsou zbytečné
+    private OrthogonalTable returnTable(OrthogonalTable orthogonalTable, String pathToCsv, int rowStart, int rowEnd, int column, int rowForValueTable, int columnForValueTable){
         CsvReader csvReader = new CsvReader();
         OrthogonalTable o = new OrthogonalTable();
         ComponentsForMatrix componentsForMatrix = new ComponentsForMatrix();
-
         try {
-            o = csvReader.returnCsvTable("src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 0,4, 3);
+            o = csvReader.returnCsvTable(pathToCsv, rowStart, rowEnd, column);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return componentsForMatrix.getTableWithValue(o.getPoorTable(), orthogonalTable.getWithValueTable(),rowForValueTable,columnForValueTable);
+    }
 
-        return componentsForMatrix.getTableWithValue(o.getPoorTable(), orthogonalTable.getWithValueTable(),4,3);
+    public OrthogonalTable twoOnThree(OrthogonalTable orthogonalTable) {
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 0,4,3, 4,3);
     }
 
     public OrthogonalTable twoOnFourAndOneOnFour(OrthogonalTable orthogonalTable) {
-        CsvReader csvReader = new CsvReader();
-        OrthogonalTable o = new OrthogonalTable();
-        ComponentsForMatrix componentsForMatrix = new ComponentsForMatrix();
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 5,13,5, 8,5);
+    }
 
-        try {
-            o = csvReader.returnCsvTable("src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 5,13, 5);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return componentsForMatrix.getTableWithValue(o.getPoorTable(), orthogonalTable.getWithValueTable(),8,5);
+    public OrthogonalTable twoOnEleven(OrthogonalTable orthogonalTable) {
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 14,26,11, 12,11);
+    }
 
+    public OrthogonalTable twoOnFourAndOneOnThree(OrthogonalTable orthogonalTable) {
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 27,40,5, 12,5);
+    }
+
+    public OrthogonalTable twoOnTwoAndOneOnSix(OrthogonalTable orthogonalTable) {
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 41,54,3, 12,3);
+    }
+
+    public OrthogonalTable twoOnEightAndOneOnEight(OrthogonalTable orthogonalTable) {
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 55,72,9, 16,9);
     }
 }
