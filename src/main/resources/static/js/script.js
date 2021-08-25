@@ -56,7 +56,7 @@ function deleteColumns() {
     }
 }
 
-function sendData() {
+async function sendData() {
     var myRows = [];
     var tbody = document.getElementById("myTableBody");
     
@@ -75,6 +75,31 @@ function sendData() {
     const myJSON = JSON.stringify(myRows);
     document.getElementById("Response").value = myJSON;
 
+    const url = '/table/tryToFind';
+    const fetchOptions = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+        },
+    body: myJSON
+    };
 
+    const res = await fetch(url, fetchOptions);
+    const ret = await res.json();
+
+    //Get data to table
+    document.getElementById("Response").value = ret.withValueTable[0];
     
+    var responseTable = document.getElementById('responseTableBody');
+
+    for (r = 0; r < ret.withValueTable.length; r++){
+        responseTable.insertRow(responseTable.rows.length)
+        for(s = 0; s < ret.withValueTable[0].length; s++){
+            var value = ret.withValueTable[r][s];
+
+            var cell = responseTable.rows[r].insertCell(s)
+            var div = document.createTextNode(value);
+            cell.appendChild(div)
+        }
+    }   
 }
