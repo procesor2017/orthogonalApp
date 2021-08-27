@@ -1,5 +1,6 @@
 package com.orthogonalTool.OrthogonalTool.practicalCode;
 
+import com.orthogonalTool.OrthogonalTool.matrix.FiveOnX;
 import com.orthogonalTool.OrthogonalTool.matrix.FourOnX;
 import com.orthogonalTool.OrthogonalTool.matrix.TwoOnX;
 import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
@@ -49,6 +50,7 @@ public class Orthogonal {
         JsonReader jsonReader = new JsonReader();
         TwoOnX twoOnX = new TwoOnX();
         FourOnX fourOnX = new FourOnX();
+        FiveOnX fiveOnX = new FiveOnX();
         System.out.println("Value list is: " + valueList);
         System.out.println("Value size is:" + valueList.size());  //Počet hodnot v listu
 
@@ -66,6 +68,8 @@ public class Orthogonal {
                     if (valueList.get(i + 1) <= 5) {
                         return fourOnX.FourOnFive(jsonReader.getTableFromJson(myArr, 5));
                     }
+                }else if (valueList.get(i) <= 5){
+                    return fiveOnX.FiveOnSix(jsonReader.getTableFromJson(myArr, 6));
                 }
             } else if (valueList.size() == 4) {
                 if (valueList.get(i) <= 2 && valueList.get(i + 1) <= 2) {
@@ -85,6 +89,16 @@ public class Orthogonal {
                 }else if (valueList.get(i) <= 2 && valueList.get(i + 3) <= 8) {
                     if (valueList.get(i + 2) <= 8 && valueList.get(i + 3) <= 1) {
                         return twoOnX.twoOnEightAndOneOnEight(jsonReader.getTableFromJson(myArr, 9));
+                    }
+                }
+            } else if (valueList.size() == 8){
+                if (valueList.get(i) <= 2 && valueList.get(i + 1) <= 5){
+                    if (valueList.get(i + 2) <= 3 && valueList.get(i + 3) == 3){
+                        if (valueList.get(i + 4) <= 4 && valueList.get(i + 5) <= 1){
+                            if (valueList.get(i + 6) <= 6 && valueList.get(i + 7) == 7){
+                                return twoOnX.twoOnFiveAndThreeOnThreeAndFourOnOneAndSixOnSeven(jsonReader.getTableFromJson(myArr, 16));
+                            }
+                        }
                     }
                 }
             }

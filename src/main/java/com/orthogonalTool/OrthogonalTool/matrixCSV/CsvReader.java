@@ -27,7 +27,7 @@ public class CsvReader {
         BufferedReader csvReader = new BufferedReader(new FileReader(pathToCsv));
         String row;
         //TODO předělat aby nenačítal celý csv
-        String[] tableWithRowFromCSV = new String[75]; //Načítá tupě celé csv
+        String[] tableWithRowFromCSV = new String[146]; //Načítá tupě celé csv
         int x = 0;
         while((row = csvReader.readLine()) != null){
             tableWithRowFromCSV[x] = row;
