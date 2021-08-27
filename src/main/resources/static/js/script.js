@@ -73,7 +73,7 @@ async function sendData() {
     }
 
     const myJSON = JSON.stringify(myRows);
-    document.getElementById("Response").value = myJSON;
+
 
     const url = '/table/tryToFind';
     const fetchOptions = {
@@ -88,7 +88,7 @@ async function sendData() {
     const ret = await res.json();
 
     //Get data to table
-    document.getElementById("Response").value = ret.withValueTable[0];
+
     
     var responseTable = document.getElementById('responseTableBody');
 
@@ -103,3 +103,13 @@ async function sendData() {
         }
     }   
 }
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else { 
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
