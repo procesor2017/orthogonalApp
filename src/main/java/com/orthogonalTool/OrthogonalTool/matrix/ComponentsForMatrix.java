@@ -32,7 +32,7 @@ public class ComponentsForMatrix {
 
         OrthogonalTable tableForBack = new OrthogonalTable();
         String[][] otDataTable= orthogonalTable.getWithValueTable();
-        HashMap<Integer, Integer> my_dict = new HashMap<Integer, Integer>;
+        HashMap<Integer, Integer> my_dict = new HashMap<Integer, Integer>();
 
         for (int i = 0; i < otDataTable[0].length; i++){
             int countRow = 0;
@@ -44,7 +44,7 @@ public class ComponentsForMatrix {
             my_dict.put(i, countRow);
         }
 
-        
+
 
         return tableForBack;
     }
