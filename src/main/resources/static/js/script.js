@@ -20,21 +20,18 @@ function appendColumn() {
     var tbl = document.getElementById('myTableBody'), 
         i;
     var theadRow = document.getElementById("myTableTheadRow");
-    var cel = theadRow.insertCell(numberCell);
-    cel.innerHTML = String(numberCell);
-    createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length));
     
+    if (tbl.rows.length > 0) {
+        var numberCell = theadRow.cells.length;
+        var cel = theadRow.insertCell(numberCell);
+        cel.innerHTML = String(numberCell);
+    }
+
 
     for (i = 0; i < tbl.rows.length; i++) {
-        if (tbl.rows.length < 1){
-
-        }else{
-            var numberCell = theadRow.cells.length;
-
-        }
-        
-    }
-    
+            createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length));
+        }     
+   
 }
 
 // delete table rows with index greater then 0
@@ -53,12 +50,21 @@ function deleteColumns() {
     var tbl = document.getElementById('myTableBody'), 
         lastCol = tbl.rows[0].cells.length - 1,    
         i, j;
+
+    var theadRow = document.getElementById("myTableTheadRow"),
+        lastColTheadRow = theadRow.cells.length - 1,
+        v;
+
     // delete cells with index greater then 0 (for each row)
     for (i = 0; i < tbl.rows.length; i++) {
         for (j = lastCol; j > 0; j--) {
             tbl.rows[i].deleteCell(j);
         }
     }
+
+    for (v = lastColTheadRow; v > 0; v--){
+        theadRow.deleteCell(v)
+        }
 }
 
 async function sendData() {
