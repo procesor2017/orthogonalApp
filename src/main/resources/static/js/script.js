@@ -20,14 +20,19 @@ function appendColumn() {
     var tbl = document.getElementById('myTableBody'), 
         i;
     var theadRow = document.getElementById("myTableTheadRow");
-    var numberCell = theadRow.cells.length;
     var cel = theadRow.insertCell(numberCell);
     cel.innerHTML = String(numberCell);
+    createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length));
     
 
     for (i = 0; i < tbl.rows.length; i++) {
+        if (tbl.rows.length < 1){
 
-        createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length));
+        }else{
+            var numberCell = theadRow.cells.length;
+
+        }
+        
     }
     
 }
@@ -73,7 +78,12 @@ async function sendData() {
     }
 
     const myJSON = JSON.stringify(myRows);
-
+    var responseTable = document.getElementById('responseTableBody');
+    responseTable.textContent = '';
+    
+    if(myJSON.length <= 2){
+        return responseTable.innerHTML = "Body is empty!!!";        
+    }
 
     const url = '/table/tryToFind';
     const fetchOptions = {
@@ -88,13 +98,6 @@ async function sendData() {
     const ret = await res.json();
 
     //Get data to table
-
-    
-    var responseTable = document.getElementById('responseTableBody');
-
-    // Delete old content
-    responseTable.textContent = '';
-
     for (r = 0; r < ret.withValueTable.length; r++){
         responseTable.insertRow(responseTable.rows.length)
         for(s = 0; s < ret.withValueTable[0].length; s++){
