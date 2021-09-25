@@ -7,6 +7,11 @@ function appendRow() {
     for (i = 0; i < tbl.rows[0].cells.length; i++) {
         createCell(row.insertCell(i));
     }
+
+    if (tbl.rows.length == 1){
+        appendColumn();
+        deleteRows();
+    }
 }
  
 // create DIV element and append to the table cell
@@ -20,6 +25,10 @@ function appendColumn() {
     var tbl = document.getElementById('myTableBody'), 
         i;
     var theadRow = document.getElementById("myTableTheadRow");
+    
+    if (tbl.rows.length == 0) {
+        appendRow();
+    }
     
     if (tbl.rows.length > 0) {
         var numberCell = theadRow.cells.length;
