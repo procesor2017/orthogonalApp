@@ -3,6 +3,7 @@ package com.orthogonalTool.OrthogonalTool.matrix;
 import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
 import org.springframework.stereotype.Component;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.*;
 
 @Component
@@ -61,10 +62,11 @@ public class ComponentsForMatrix {
         Set<Integer> keys = sortedMap.keySet();
         int k = 0;
         for (Integer key : keys) {
-            colArrayValue[k] = key;
+            colArrayValue[k] = key;   //ukládá pořadí sloupcu jak se mají doplnovat do nové tabulky
             rowArrayValue[k] = sortedMap.get(key);
             k++;
         }
+        System.out.println(Arrays.toString(colArrayValue));
 
 
         System.out.println("New table has row: " + newTable.length + "and col:" + newTable[0].length);
@@ -76,10 +78,12 @@ public class ComponentsForMatrix {
             //row
             for(int j = 0; j < rowArrayValue[i]; j++){
               //přeskládat otDatatable tak aby odpovídali col a řádkum z my_dict tedy třeba col 2 se přesune na první pozici a první col na poslední
-                System.out.println("Data které dávám do nové tabulky: " + dataTable[j][colArrayValue[j]]);
-                newTable[j][i] = dataTable[j][colArrayValue[j]];
+                System.out.println("value of array : " + rowArrayValue[i]);
+                System.out.println("datatable[j][colarrayvalue[j]]: " + dataTable[j][colArrayValue[j]]);
+                newTable[j][i] = dataTable[j][colArrayValue[i]];
             }
         }
+        System.out.println(Arrays.deepToString(dataTable));
         System.out.println(Arrays.deepToString(newTable));
         return newTable;
     }
