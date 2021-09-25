@@ -12,7 +12,9 @@ public class ComponentsForMatrix {
         String tableWithValue[][] = new String[rowForValueTable][columnForValueTable];
         OrthogonalTable backTable = new OrthogonalTable();
 
+        System.out.println(Arrays.deepToString(dataTable));
         dataTable = iterDatatableFromUser(dataTable);
+        System.out.println(Arrays.deepToString(dataTable));
 
         int oArray[][] = poorTable;
         for(int i=0; i<oArray.length; i++) {
@@ -26,7 +28,7 @@ public class ComponentsForMatrix {
         return backTable;
     }
 
-    public String[][] iterDatatableFromUser(String[][] dataTable){
+    private String[][] iterDatatableFromUser(String[][] dataTable){
         HashMap<Integer, Integer> my_dict = new HashMap<Integer, Integer>();
         String[][] newTable = new String[dataTable.length][dataTable[0].length];
         //Maps for iterating

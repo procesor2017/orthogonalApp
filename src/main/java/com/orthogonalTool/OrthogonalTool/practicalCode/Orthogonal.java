@@ -101,6 +101,9 @@ public class Orthogonal {
                         }
                     }
                 }
+            }else{
+                OrthogonalTable o1 = new OrthogonalTable();
+                return o1;
             }
         } catch (Exception e) {
             e.printStackTrace();

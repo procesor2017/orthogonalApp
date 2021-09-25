@@ -92,6 +92,9 @@ async function sendData() {
     
     var responseTable = document.getElementById('responseTableBody');
 
+    // Delete old content
+    responseTable.textContent = '';
+
     for (r = 0; r < ret.withValueTable.length; r++){
         responseTable.insertRow(responseTable.rows.length)
         for(s = 0; s < ret.withValueTable[0].length; s++){
