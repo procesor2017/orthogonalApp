@@ -5,6 +5,7 @@
     <script type="text/javascript" th:src="@{/js/script.js}"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -42,6 +43,11 @@
   <!-- The Table Section -->
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="divInputTable">
     <h2 class="w3-wide">INPUT TABLE</h2>
+    <button onclick="appendRow()">Add Row</button>
+    <button onclick="appendColumn()">Add Column</button>
+    <button onclick="deleteRows()">Delete Row</button>
+    <button onclick="deleteColumns()">Delete Column</button>
+    <button onclick="sendData()">Send Data</button>
     <table id="myTable">
         <thead id="myTableThead">
             <tr id="myTableTheadRow"></tr>
@@ -49,11 +55,7 @@
         <tbody id="myTableBody"></tbody>
     </table>
         
-    <button onclick="appendRow()">Add Row</button>
-    <button onclick="appendColumn()">Add Column</button>
-    <button onclick="deleteRows()">Delete Row</button>
-    <button onclick="deleteColumns()">Delete Column</button>
-    <button onclick="sendData()">Send Data</button>
+
 
   </div>
 
@@ -74,7 +76,15 @@
 <!-- The List of tables -->
 <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="listOfTable">
   <h2 class="w3-wide">List of Table</h2>
-    ASD
+    2^3     n=4 </p>
+    2^4 4^1     n=8</p>
+    2^11     n=12</p>
+    2^4 3^1     n=12</p>
+    2^2 6^1     n=12</p>
+    2^8 8^1     n=16</p>
+    2^5 3^3 4^1 6^7     n=72</p>
+    4^5     n=16</p>
+    4^5     n=16</p></p></p></p>
 
 </div>
 <!-- End Page Content -->
