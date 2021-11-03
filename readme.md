@@ -1,10 +1,6 @@
-cd C:\Users\JanEgermaiertesena\IdeaProjects\orthogonalApp
-mvnw spring-boot:run
+# Arrasy tool
 
-## TODO
-- frontend jen obyč stránka s dvouma tabulkama
-- nahradit null ve výsledné tabulce za n/a
-- zleptšít algorytmus
-- vytvořit metodu na splitnutí dokumentu na csv
-- Upravit načítání CSV aby se nanačítalo vše ale jen od daných řádků
-- V případě nenalezní tabulky do které by se to dalo bouchnout vyhodit text že neeexistuje tabulka
+## [Tesena](https://www.tesena.com/) | [Docker](https://hub.docker.com/r/procesor/arrays_tool) | [GitHub](https://github.com/procesor2017/orthogonalApp)
+
+# Basic Info
+Arrasy tool is simple tool for using orthogonal table in testing. We still builded this tool so if u find some bugs or you have trouble, please can report to issue section.

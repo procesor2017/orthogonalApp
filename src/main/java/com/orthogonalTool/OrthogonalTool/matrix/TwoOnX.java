@@ -22,26 +22,30 @@ public class TwoOnX {
     }
 
     public OrthogonalTable twoOnThree(OrthogonalTable orthogonalTable) {
-        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 0,4,3, 4,3);
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 1,5,3, 4,3);
     }
 
     public OrthogonalTable twoOnFourAndOneOnFour(OrthogonalTable orthogonalTable) {
-        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 5,13,5, 8,5);
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 7,15,5, 8,5);
     }
 
     public OrthogonalTable twoOnEleven(OrthogonalTable orthogonalTable) {
-        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 14,26,11, 12,11);
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 17,29,11, 12,11);
     }
 
     public OrthogonalTable twoOnFourAndOneOnThree(OrthogonalTable orthogonalTable) {
-        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 27,40,5, 12,5);
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 31,43,5, 12,5);
     }
 
     public OrthogonalTable twoOnTwoAndOneOnSix(OrthogonalTable orthogonalTable) {
-        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 41,54,3, 12,3);
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 45,57,3, 12,3);
     }
 
     public OrthogonalTable twoOnEightAndOneOnEight(OrthogonalTable orthogonalTable) {
-        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 55,72,9, 16,9);
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 59,75,9, 16,9);
+    }
+
+    public OrthogonalTable twoOnFiveAndThreeOnThreeAndFourOnOneAndSixOnSeven(OrthogonalTable orthogonalTable) {
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 77,149,16, 70,16);
     }
 }

@@ -7,6 +7,11 @@ function appendRow() {
     for (i = 0; i < tbl.rows[0].cells.length; i++) {
         createCell(row.insertCell(i));
     }
+
+    if (tbl.rows.length == 1){
+        appendColumn();
+        deleteRows();
+    }
 }
  
 // create DIV element and append to the table cell
@@ -20,16 +25,22 @@ function appendColumn() {
     var tbl = document.getElementById('myTableBody'), 
         i;
     var theadRow = document.getElementById("myTableTheadRow");
-    var numberCell = theadRow.cells.length;
-    var cel = theadRow.insertCell(numberCell);
-    cel.innerHTML = String(numberCell);
     
-
-    for (i = 0; i < tbl.rows.length; i++) {
-
-        createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length));
+    if (tbl.rows.length == 0) {
+        appendRow();
     }
     
+    if (tbl.rows.length > 0) {
+        var numberCell = theadRow.cells.length;
+        var cel = theadRow.insertCell(numberCell);
+        cel.innerHTML = String(numberCell);
+    }
+
+
+    for (i = 0; i < tbl.rows.length; i++) {
+            createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length));
+        }     
+   
 }
 
 // delete table rows with index greater then 0
@@ -48,12 +59,21 @@ function deleteColumns() {
     var tbl = document.getElementById('myTableBody'), 
         lastCol = tbl.rows[0].cells.length - 1,    
         i, j;
+
+    var theadRow = document.getElementById("myTableTheadRow"),
+        lastColTheadRow = theadRow.cells.length - 1,
+        v;
+
     // delete cells with index greater then 0 (for each row)
     for (i = 0; i < tbl.rows.length; i++) {
         for (j = lastCol; j > 0; j--) {
             tbl.rows[i].deleteCell(j);
         }
     }
+
+    for (v = lastColTheadRow; v > 0; v--){
+        theadRow.deleteCell(v)
+        }
 }
 
 async function sendData() {
@@ -73,7 +93,12 @@ async function sendData() {
     }
 
     const myJSON = JSON.stringify(myRows);
-    document.getElementById("Response").value = myJSON;
+    var responseTable = document.getElementById('responseTableBody');
+    responseTable.textContent = '';
+    
+    if(myJSON.length <= 2){
+        return responseTable.innerHTML = "Body is empty!!!";        
+    }
 
     const url = '/table/tryToFind';
     const fetchOptions = {
@@ -88,10 +113,6 @@ async function sendData() {
     const ret = await res.json();
 
     //Get data to table
-    document.getElementById("Response").value = ret.withValueTable[0];
-    
-    var responseTable = document.getElementById('responseTableBody');
-
     for (r = 0; r < ret.withValueTable.length; r++){
         responseTable.insertRow(responseTable.rows.length)
         for(s = 0; s < ret.withValueTable[0].length; s++){
@@ -103,3 +124,13 @@ async function sendData() {
         }
     }   
 }
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+    } else { 
+      x.className = x.className.replace(" w3-show", "");
+    }
+  }
