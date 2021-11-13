@@ -2,8 +2,6 @@ package com.orthogonalTool.OrthogonalTool.matrix;
 
 import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
 import org.springframework.stereotype.Component;
-
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.*;
 
 @Component
@@ -12,14 +10,11 @@ public class ComponentsForMatrix {
         String tableWithValue[][] = new String[rowForValueTable][columnForValueTable];
         OrthogonalTable backTable = new OrthogonalTable();
 
-        System.out.println(Arrays.deepToString(dataTable));
         dataTable = iterDatatableFromUser(dataTable);
-        System.out.println(Arrays.deepToString(dataTable));
 
         int oArray[][] = poorTable;
         for(int i=0; i<oArray.length; i++) {
             for(int j=0; j<oArray[i].length; j++) {
-                System.out.println(dataTable[oArray[i][j]][j]);
                 tableWithValue[i][j] = dataTable[oArray[i][j]][j];
             }
         }

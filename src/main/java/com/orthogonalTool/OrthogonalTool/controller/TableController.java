@@ -7,8 +7,6 @@ import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
 import com.orthogonalTool.OrthogonalTool.practicalCode.JsonReader;
 import com.orthogonalTool.OrthogonalTool.practicalCode.Orthogonal;
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
-import netscape.javascript.JSObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

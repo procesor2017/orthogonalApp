@@ -1,5 +1,4 @@
 FROM openjdk:16
-MAINTAINER Jan Egermaier
 
 EXPOSE 8081
 COPY . .

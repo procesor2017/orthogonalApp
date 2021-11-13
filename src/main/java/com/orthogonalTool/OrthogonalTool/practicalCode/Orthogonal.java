@@ -2,6 +2,7 @@ package com.orthogonalTool.OrthogonalTool.practicalCode;
 
 import com.orthogonalTool.OrthogonalTool.matrix.FiveOnX;
 import com.orthogonalTool.OrthogonalTool.matrix.FourOnX;
+import com.orthogonalTool.OrthogonalTool.matrix.ThreeOnX;
 import com.orthogonalTool.OrthogonalTool.matrix.TwoOnX;
 import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
 import net.minidev.json.JSONArray;
@@ -49,10 +50,14 @@ public class Orthogonal {
         OrthogonalTable o = new OrthogonalTable();
         JsonReader jsonReader = new JsonReader();
         TwoOnX twoOnX = new TwoOnX();
+        ThreeOnX threeOnX = new ThreeOnX();
         FourOnX fourOnX = new FourOnX();
         FiveOnX fiveOnX = new FiveOnX();
+        
         System.out.println("Value list is: " + valueList);
         System.out.println("Value size is:" + valueList.size());  //Počet hodnot v listu
+
+
 
         int i = 0;
         try {
@@ -64,22 +69,39 @@ public class Orthogonal {
                     }else if(valueList.get(i + 1) <= 11){
                         return twoOnX.twoOnEleven(jsonReader.getTableFromJson(myArr,11));
                     }
-                }else if (valueList.get(i) <= 4) {
+                }
+                else if (valueList.get(i) == 3){
+                    if (valueList.get(i + 1) <= 4){
+                        return threeOnX.ThreeOnFour(jsonReader.getTableFromJson(myArr, 4));
+                    }
+                }
+                else if (valueList.get(i) == 4) {
                     if (valueList.get(i + 1) <= 5) {
                         return fourOnX.FourOnFive(jsonReader.getTableFromJson(myArr, 5));
                     }
-                }else if (valueList.get(i) <= 5){
-                    return fiveOnX.FiveOnSix(jsonReader.getTableFromJson(myArr, 6));
                 }
-            } else if (valueList.size() == 4) {
+                else if (valueList.get(i) == 5){
+                    if (valueList.get(i + 1) <= 6) {
+                        return fiveOnX.FiveOnSix(jsonReader.getTableFromJson(myArr, 6));
+                    }
+                }
+                else{
+                    System.out.println("I find shit in my ass");
+                    return null;
+                }
+            } 
+            else if (valueList.size() == 4) {
                 if (valueList.get(i) <= 2 && valueList.get(i + 1) <= 2) {
                     if (valueList.get(i + 2) <= 6 && valueList.get(i + 3) <= 1) {
                         return twoOnX.twoOnTwoAndOneOnSix(jsonReader.getTableFromJson(myArr, 3));
                     }
+                    else if (valueList.get(i + 2) <= 10 && valueList.get(i + 3) <= 1) {
+                        return twoOnX.twoOnTwoAndTenOnOne(jsonReader.getTableFromJson(myArr, 3));
+                    }
                 }
                 // tabulka má 2 možnosti ve čtyřech sloupečkách
                 else if (valueList.get(i) <= 2 && valueList.get(i + 1) <= 4) {
-                    // a 3 možnosti v jednom sloupečku
+                    // a 3 možnosti v jednom sloupečku 2^4 3^1 [2,4,3,1]
                     if (valueList.get(i + 2) <= 3 && valueList.get(i + 3) <= 1) {
                         return twoOnX.twoOnFourAndOneOnThree(jsonReader.getTableFromJson(myArr, 5));
                     }
@@ -87,10 +109,49 @@ public class Orthogonal {
                         return twoOnX.twoOnFourAndOneOnFour(jsonReader.getTableFromJson(myArr, 5));
                     }
                 }else if (valueList.get(i) <= 2 && valueList.get(i + 3) <= 8) {
+                    // 2^8 8^1 [2,8,8,1]
                     if (valueList.get(i + 2) <= 8 && valueList.get(i + 3) <= 1) {
                         return twoOnX.twoOnEightAndOneOnEight(jsonReader.getTableFromJson(myArr, 9));
                     }
+                    // 2^8 5^1 [2,8,5,1]
+                    else if (valueList.get(i + 2) <= 5 && valueList.get(i + 3) <= 1){
+                        return twoOnX.twoOnEightAndFiveOnOne(jsonReader.getTableFromJson(myArr, 9));
+                    }
                 }
+                else if (valueList.get(i) <= 3 && valueList.get(i + 1) <= 6){
+                    if (valueList.get(i + 6) <= 1 && valueList.get(i + 3) <= 1) {
+                        // 3^6 6^1 [3,6,6,1]
+                        return threeOnX.ThreeOnSixAndSixOnOne(jsonReader.getTableFromJson(myArr, 7));
+                    }
+                } 
+                else if (valueList.get(i) <= 3 && valueList.get(i + 1) <= 9){
+                    if (valueList.get(i + 6) <= 9 && valueList.get(i + 3) <= 1) {
+                        // 3^9 9^1 [3,9,9,1]
+                        return threeOnX.ThreeOnNinexAndNineOnOne(jsonReader.getTableFromJson(myArr, 7));
+                    }
+                } 
+                else if (valueList.get(i) <= 4 && valueList.get(i + 1) <= 8){
+                    if (valueList.get(i + 6) <= 8 && valueList.get(i + 3) <= 1) {
+                        // 3^9 9^1 [3,9,9,1]
+                        return fourOnX.FourOnEightAndEightOnOne(jsonReader.getTableFromJson(myArr, 9));
+                    }
+                }
+            }
+            else if (valueList.size() == 6){
+                if (valueList.get(i + 2) <= 2 && valueList.get(i + 3) <= 3){
+                    if (valueList.get(i + 4) <= 3 && valueList.get(i + 5) <= 2){
+                        if (valueList.get(i + 6) <= 6 && valueList.get(i + 7) <= 3){
+                            return twoOnX.twoOnThreeAndThreeOnTwoAndSixOnThree(jsonReader.getTableFromJson(myArr, 16));
+                        }
+                    }
+                }
+                else if (valueList.get(i + 2) <= 2 && valueList.get(i + 3) <= 4){
+                    if (valueList.get(i + 4) <= 3 && valueList.get(i + 5) <= 1){
+                        if (valueList.get(i + 6) <= 6 && valueList.get(i + 7) <= 3){
+                            return twoOnX.twoOnFourAndThreeOnOneAndSixOnThree(jsonReader.getTableFromJson(myArr, 16));
+                        }
+                    }
+                }       
             } else if (valueList.size() == 8){
                 if (valueList.get(i) <= 2 && valueList.get(i + 1) <= 5){
                     if (valueList.get(i + 2) <= 3 && valueList.get(i + 3) == 3){
@@ -102,13 +163,12 @@ public class Orthogonal {
                     }
                 }
             }else{
-                OrthogonalTable o1 = new OrthogonalTable();
-                return o1;
+                return null;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println("=============  End fint OT =======================");
-        return o;
+        return null;
     }
 }

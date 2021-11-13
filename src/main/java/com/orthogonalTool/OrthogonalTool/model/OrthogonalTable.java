@@ -1,7 +1,5 @@
 package com.orthogonalTool.OrthogonalTool.model;
 
-import org.springframework.stereotype.Component;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -73,7 +71,6 @@ public class OrthogonalTable {
         int numbersOfCol = withValueTable[0].length;
         List<Integer> valuesInRows = new ArrayList<>();
         List<Integer> finalValues = new ArrayList<>();
-        int valueNumber = 0;
 
         System.out.println(withValueTable.length);
         System.out.println(withValueTable[0].length);

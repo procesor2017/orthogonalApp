@@ -79,6 +79,7 @@ function deleteColumns() {
 async function sendData() {
     var myRows = [];
     var tbody = document.getElementById("myTableBody");
+    var tryB = document.getElementById("try");
     
     for (i = 0; i < tbody.rows.length; i++) {
         var dict = {}
@@ -110,19 +111,30 @@ async function sendData() {
     };
 
     const res = await fetch(url, fetchOptions);
-    const ret = await res.json();
+
+    if (res.body.length == 0){
+        return tryB.innerHTML = "Blabla"
+ 
+    }else{
+        const ret = await res.json();
+    }
+        
 
     //Get data to table
-    for (r = 0; r < ret.withValueTable.length; r++){
-        responseTable.insertRow(responseTable.rows.length)
-        for(s = 0; s < ret.withValueTable[0].length; s++){
-            var value = ret.withValueTable[r][s];
+    if (ret == null){
+        responseTable.textContent = "Table isnt in list.";
+    }else{
+        for (r = 0; r < ret.withValueTable.length; r++){
+            responseTable.insertRow(responseTable.rows.length)
+            for(s = 0; s < ret.withValueTable[0].length; s++){
+                var value = ret.withValueTable[r][s];
 
-            var cell = responseTable.rows[r].insertCell(s)
-            var div = document.createTextNode(value);
-            cell.appendChild(div)
-        }
-    }   
+                var cell = responseTable.rows[r].insertCell(s)
+                var div = document.createTextNode(value);
+                cell.appendChild(div)
+            }
+        }   
+    }
 }
 
 // Used to toggle the menu on small screens when clicking on the menu button

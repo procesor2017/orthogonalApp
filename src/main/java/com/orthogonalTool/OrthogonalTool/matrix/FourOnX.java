@@ -25,4 +25,8 @@ public class FourOnX {
     public OrthogonalTable FourOnFive(OrthogonalTable orthogonalTable) {
         return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/4onX.csv", 1,17,5, 16,5);
     }
+
+    public OrthogonalTable FourOnEightAndEightOnOne(OrthogonalTable orthogonalTable) {
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/4onX.csv", 19,51,9, 32, 9);
+    }
 }
