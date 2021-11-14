@@ -60,7 +60,7 @@ public class TwoOnX {
     }
 
     public OrthogonalTable twoOnTwoAndTenOnOne(OrthogonalTable orthogonalTable) {
-        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 173,193,3, 20, 3);
+        return returnTable(orthogonalTable, "src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", 173,193, 3, 20, 3);
     }
 
     public OrthogonalTable twoOnFourAndThreeOnOneAndSixOnThree(OrthogonalTable orthogonalTable) {

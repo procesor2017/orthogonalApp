@@ -24,8 +24,6 @@ public class ThreeOnX {
         }
 
         OrthogonalTable returnTable = componentsForMatrix.getTableWithValue(o.getPoorTable(), orthogonalTable.getWithValueTable(),realRowForValueTable, column);
-        System.out.println(Arrays.deepToString(returnTable.getPoorTable()));
-        System.out.println(Arrays.deepToString(orthogonalTable.getWithValueTable()));
 
         return returnTable;
     }

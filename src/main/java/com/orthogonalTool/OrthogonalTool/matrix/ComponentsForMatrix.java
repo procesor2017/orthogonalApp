@@ -12,16 +12,15 @@ public class ComponentsForMatrix {
 
         dataTable = iterDatatableFromUser(dataTable);
 
-        System.out.println("nnnnnnn");
-
         int oArray[][] = poorTable;
+
         for(int i=0; i<oArray.length; i++) {
             for(int j=0; j<oArray[i].length; j++) {
                 tableWithValue[i][j] = dataTable[oArray[i][j]][j];
+
             }
         }
 
-        System.out.println("vrnnnnnnnn");
         backTable.setWithValueTable(tableWithValue);
         backTable.setPoorTable(poorTable);
         return backTable;
