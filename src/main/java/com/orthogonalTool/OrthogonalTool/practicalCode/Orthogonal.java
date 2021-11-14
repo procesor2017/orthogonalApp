@@ -47,7 +47,6 @@ public class Orthogonal {
         //TODO: Předělat pak na cyklus který projde list ve kterém porovná value list s tabulkama které mám a pak podle výsledné hodnoty bude jen switch
         // Value list funguje jako array s hodnotami řádky, sloupečky, řádky, sloupečky etc.
         System.out.println("========== Start find OT for back to user new table =====================");
-        OrthogonalTable o = new OrthogonalTable();
         JsonReader jsonReader = new JsonReader();
         TwoOnX twoOnX = new TwoOnX();
         ThreeOnX threeOnX = new ThreeOnX();
@@ -141,7 +140,6 @@ public class Orthogonal {
                 else if (valueList.get(i) <= 3 && valueList.get(i + 1) <= 9){
                     if (valueList.get(i + 2) <= 9 && valueList.get(i + 3) <= 1) {
                         // 3^9 9^1 [3,9,9,1]
-                        System.out.println("Sem správně");
                         return threeOnX.ThreeOnNinexAndNineOnOne(jsonReader.getTableFromJson(myArr, 10));
                     }else{
                         return null;

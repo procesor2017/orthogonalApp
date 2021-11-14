@@ -4,7 +4,6 @@ import com.orthogonalTool.OrthogonalTool.matrixCSV.CsvReader;
 import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
-import java.sql.Array;
 import java.util.Arrays;
 
 @Component
