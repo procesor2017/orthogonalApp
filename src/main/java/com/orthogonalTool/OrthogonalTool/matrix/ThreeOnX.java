@@ -5,6 +5,7 @@ import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @Component
 public class ThreeOnX {
@@ -21,7 +22,12 @@ public class ThreeOnX {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return componentsForMatrix.getTableWithValue(o.getPoorTable(), orthogonalTable.getWithValueTable(), realRowForValueTable, column);
+
+        OrthogonalTable returnTable = componentsForMatrix.getTableWithValue(o.getPoorTable(), orthogonalTable.getWithValueTable(),realRowForValueTable, column);
+        System.out.println(Arrays.deepToString(returnTable.getPoorTable()));
+        System.out.println(Arrays.deepToString(orthogonalTable.getWithValueTable()));
+
+        return returnTable;
     }
 
     public OrthogonalTable ThreeOnFour(OrthogonalTable orthogonalTable) {

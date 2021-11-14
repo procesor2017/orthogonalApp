@@ -79,7 +79,7 @@ function deleteColumns() {
 async function sendData() {
     var myRows = [];
     var tbody = document.getElementById("myTableBody");
-    var tryB = document.getElementById("try");
+    var tWarning = document.getElementById("warning-text");
     
     for (i = 0; i < tbody.rows.length; i++) {
         var dict = {}
@@ -112,18 +112,10 @@ async function sendData() {
 
     const res = await fetch(url, fetchOptions);
 
-    if (res.body.length == 0){
-        return tryB.innerHTML = "Blabla"
- 
-    }else{
+    try{
         const ret = await res.json();
-    }
-        
-
-    //Get data to table
-    if (ret == null){
-        responseTable.textContent = "Table isnt in list.";
-    }else{
+         
+        //Get data to table
         for (r = 0; r < ret.withValueTable.length; r++){
             responseTable.insertRow(responseTable.rows.length)
             for(s = 0; s < ret.withValueTable[0].length; s++){
@@ -133,8 +125,13 @@ async function sendData() {
                 var div = document.createTextNode(value);
                 cell.appendChild(div)
             }
-        }   
+        }  
+    } catch (error){
+        return tWarning.innerHTML = "We dont have orthogonal table which can works on your parameters."
     }
+
+ 
+    
 }
 
 // Used to toggle the menu on small screens when clicking on the menu button

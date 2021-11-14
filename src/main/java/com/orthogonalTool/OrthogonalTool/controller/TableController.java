@@ -49,6 +49,7 @@ public class TableController {
     @PostMapping("/table/tryToFind")
     public OrthogonalTable tryToFindBestTable(@RequestBody JSONArray myArr) {
         List<Integer> list = jsonReader.getTableFromJson(myArr, 10).getTableType();
+        System.out.println("Jdeme na výběr OT");
         return orthogonal.chooseOrthogonalTable(list, myArr);
     }
 

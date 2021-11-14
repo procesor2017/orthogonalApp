@@ -4,6 +4,8 @@ import com.orthogonalTool.OrthogonalTool.matrixCSV.CsvReader;
 import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
 import org.springframework.stereotype.Component;
 import java.io.IOException;
+import java.sql.Array;
+import java.util.Arrays;
 
 @Component
 public class TwoOnX {
@@ -18,7 +20,11 @@ public class TwoOnX {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return componentsForMatrix.getTableWithValue(o.getPoorTable(), orthogonalTable.getWithValueTable(),rowForValueTable,columnForValueTable);
+        OrthogonalTable returnTable = componentsForMatrix.getTableWithValue(o.getPoorTable(), orthogonalTable.getWithValueTable(), rowForValueTable, columnForValueTable);
+        System.out.println(Arrays.deepToString(returnTable.getPoorTable()));
+        System.out.println(Arrays.deepToString(orthogonalTable.getWithValueTable()));
+
+        return returnTable;
     }
 
     public OrthogonalTable twoOnThree(OrthogonalTable orthogonalTable) {
