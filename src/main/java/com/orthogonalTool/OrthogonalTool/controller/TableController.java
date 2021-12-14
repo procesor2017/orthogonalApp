@@ -35,46 +35,10 @@ public class TableController {
         return csvReader.returnCsvTable("src/main/java/com/orthogonalTool/OrthogonalTool/matrixCSV/2onX.csv", rowStart,rowEnd, column);
     }
 
-    @PostMapping("/table/2on3")
-    public OrthogonalTable get2onXTable(@RequestBody JSONArray myArr){
-        return twoOnX.twoOnThree(jsonReader.getTableFromJson(myArr, 3));
-    }
-
-    //http://localhost:8080/table/tryNewTable
-    @GetMapping("/table/2on3&1on4")
-    public OrthogonalTable getNewTable(@RequestBody JSONArray myArr) {
-        return twoOnX.twoOnFourAndOneOnFour(jsonReader.getTableFromJson(myArr, 5));
-    }
-
     @PostMapping("/table/tryToFind")
     public OrthogonalTable tryToFindBestTable(@RequestBody JSONArray myArr) {
         List<Integer> list = jsonReader.getTableFromJson(myArr, 10).getTableType();
         System.out.println("Jdeme na výběr OT");
         return orthogonal.chooseOrthogonalTable(list, myArr);
     }
-
-
-
-    //http://localhost:8080/table/tryNewTable
-    @GetMapping("/table/MoltenCore")
-    public String getMoltenCore() {
-        String myArr[][] = new String[10][10];
-        myArr[0][0] = "Oracle";
-        myArr[1][0] = "MySqlite";
-
-        myArr[0][1] = "Hybernate";
-        myArr[1][1] = "JPA";
-
-        myArr[0][2] = "Rest";
-        myArr[1][2] = "rwi";
-        myArr[2][2] = "rwi";
-
-        OrthogonalTable orthogonalTable = new OrthogonalTable();
-        orthogonalTable.setWithValueTable(myArr);
-
-        orthogonalTable.getTableType();
-
-        return "index";
-    }
-
 }

@@ -73,4 +73,5 @@ public class TwonOnXTest {
         assertTrue(Arrays.deepEquals(poorTable, twoOnX.twoOnThree(orthogonalTable).getPoorTable()));
         assertTrue(Arrays.deepEquals(myValueTabel, twoOnX.twoOnThree(orthogonalTable).getWithValueTable()));
     }
+
 }
