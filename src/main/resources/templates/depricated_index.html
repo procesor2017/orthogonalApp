@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>JS + Spring Data Rest</title>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+    <style>
+    body {font-family: "Lato", sans-serif}
+    .mySlides {display: none}
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="#divInputTable" class="w3-bar-item w3-button w3-padding-large w3-hide-small">INPUT TABLE</a>
+    <a href="#div-responseTable" class="w3-bar-item w3-button w3-padding-large w3-hide-small">RESPONSE TABLE</a>
+    <a href="#listOfTable" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LIST OF TABLE</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+  </div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <a href="#divInputTable" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">INPUT TABLE</a>
+  <a href="#div-responseTable" class="w3-bar-item w3-button w3-padding-large w3-hide-small">RESPONSE TABLE</a>
+  <a href="#listOfTable" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LIST OF TABLE</a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- The Table Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="divInputTable">
+    <h2 class="w3-wide">INPUT TABLE</h2>
+    <button onclick="appendRow()">Add Row</button>
+    <button onclick="appendColumn()">Add Column</button>
+    <button onclick="deleteRows()">Delete Row</button>
+    <button onclick="deleteColumns()">Delete Column</button>
+    <button onclick="sendData()">Send Data</button>
+    <table id="myTable">
+        <thead id="myTableThead">
+            <tr id="myTableTheadRow"></tr>
+        </thead>
+        <tbody id="myTableBody"></tbody>
+    </table>
+        
+
+
+  </div>
+
+    <!-- The responseTable Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="div-responseTable">
+    <h2 class="w3-wide">RESPONSE TABLE</h2>
+      <h3 id="warning-text"></h3>
+    
+
+    <p></p>
+    <table id="responseTable">
+       <tbody id="responseTableBody"></tbody>
+
+    </table>
+    </div>
+</div>
+
+<!-- The List of tables -->
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="listOfTable">
+  <h2 class="w3-wide">List of Table</h2>
+    2^3     n=4 </p>
+    2^4 4^1     n=8  </p>
+    2^11     n=12 </p>
+    2^4 3^1     n=12  </p>
+    2^2 6^1     n=12  </p>
+    2^8 8^1     n=16  </p>
+    2^5 3^3 4^1 6^7     n=72  </p>
+    2^8 5^1     n=20  </p>
+    2^2 10^1     n=20  </p>
+    2^4 3^1 6^3     n=36  </p>
+    2^3 3^2 6^3     n=36  </p>
+    3^4     n=9  </p>
+    3^6 6^1     n=18  </p>
+    3^9 9^1     n=27  </p>
+    4^5     n=16  </p>
+    4^8 8^1     n=32  </p>
+    5^6     n=25  </p>
+
+</div>
+<!-- End Page Content -->
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+</body>
+</html>
