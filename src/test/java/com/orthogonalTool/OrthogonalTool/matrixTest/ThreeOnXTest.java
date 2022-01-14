@@ -1,7 +1,6 @@
 package com.orthogonalTool.OrthogonalTool.matrixTest;
 
 import com.orthogonalTool.OrthogonalTool.matrix.ThreeOnX;
-import com.orthogonalTool.OrthogonalTool.matrix.TwoOnX;
 import com.orthogonalTool.OrthogonalTool.model.OrthogonalTable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
