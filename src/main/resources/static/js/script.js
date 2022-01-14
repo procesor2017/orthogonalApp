@@ -8,16 +8,25 @@ function appendRow() {
         createCell(row.insertCell(i));
     }
 
+    
     if (tbl.rows.length == 1){
         appendColumn();
         deleteRows();
     }
+
 }
  
 // create DIV element and append to the table cell
 function createCell(cell) {
     var div = document.createElement('input'); 
     cell.appendChild(div)
+}
+
+// create DIV element and append to the table cell
+function createFirstCell(cell) {
+    var nameRows = "TC"
+    var divNameCell = document.createTextNode(nameRows)
+    cell.appendChild(divNameCell)
 }
 
 // append column to the HTML table
@@ -125,6 +134,11 @@ async function sendData() {
                 var div = document.createTextNode(value);
                 cell.appendChild(div)
             }
+            
+            var nameRows = "TC" + r.toString()
+            var cellName = responseTable.rows[r].insertCell(0)
+            var divNameCell = document.createTextNode(nameRows)
+            cellName.appendChild(divNameCell)
         }  
     } catch (error){
         return tWarning.innerHTML = "We dont have orthogonal table which can works on your parameters."

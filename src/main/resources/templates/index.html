@@ -6,19 +6,21 @@
     <link th:href="@{/css/styles.css}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-
+    <link type="image/vnd.microsoft.icon" href="https://www.tesena.com/files/favicon.ico" rel="shortcut icon">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
+  </head>
 
 <body>
 
   <div class ="main-menu" id="main-menu">
       <ul class="topnav">
         <li><a href="#" class="main-menu-href">HOME</a></li>
-        <li><a href="#divInputTable" class="main-menu-href">INPUT TABLE</a></li>
-        <li><a href="#div-responseTable" class="main-menu-href">RESPONSE TABLE</a></li>
-        <li><a href="#listOfTable" class="main-menu-href">LIST OF TABLE</a></li>
-        <li><a href="#contact" class="main-menu-href">CONTACT</a></li>
+        <li><a href="#input-table" class="main-menu-href">INPUT TABLE</a></li>
+        <li><a href="#result-table" class="main-menu-href">RESPONSE TABLE</a></li>
+        <li><a href="#list-of-table" class="main-menu-href">LIST OF TABLE</a></li>
+        <li><a href="#footer" class="main-menu-href">CONTACT</a></li>
         <li style="float:right; padding: 0;"><a href="https://www.tesena.com/en" class="main-menu-href" style="float:right; padding: 12px; height: 100%;">
           <svg width="150px" height="40px" float="right" >       
             <image xlink:href="https://www.tesena.com/files/logo-tesena.svg" width="150px" height="40px" float="right"/>    
@@ -32,12 +34,18 @@
       
       <div class="index-div-left">
         <h1>Testing 360°</h1>
-        We focus all our activities on testing.
+        We focus all our activities on testing.</p>
+        <a href="https://www.tesena.com/en">
+          <div class="btn-radius-border">
+            EXPLORE
+          </div>
+        </a>
+        
       </div>
       <div class="index-div-right"></div>
     </div>
 
-    <div class="input-table">
+    <div class="input-table" id="input-table">
       <h2 class="web-h2">INPUT TABLE</h2>
       <button onclick="appendRow()">Add Row</button>
       <button onclick="appendColumn()">Add Column</button>
@@ -51,14 +59,14 @@
           <tbody id="myTableBody"></tbody>
       </table>
     </div>
-    <div class="result-table">
+    <div class="result-table" id="result-table">
       <h2>Response table</h2>
       <table id="responseTable">
         <tbody id="responseTableBody"></tbody>
-
+          <div id="warning-text"></div>
       </table> 
     </div>
-    <div class="list-of-table">
+    <div class="list-of-table" id="list-of-table">
       <h2>List of Table</h2>
       2^3     n=4 </p>
       2^4 4^1     n=8  </p>
@@ -79,7 +87,7 @@
       5^6     n=25  </p>
     </div>
   </div>
-  <div class="footer">
+  <div class="footer" id="footer">
     <a href="https://www.facebook.com/tesena.smart.testing/" class="fa fa-facebook"></a>
     <a href="https://www.instagram.com/jsmetesena/?utm_medium=copy_link" class="fa fa-instagram"></a>
     <a href="https://www.youtube.com/channel/UCXAYaVsc9AocWpVzHiGXtHQ" class="fa fa-youtube"></a>
