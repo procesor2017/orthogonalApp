@@ -1,89 +1,46 @@
 // append row to the HTML table
-function appendRow() {
-    var tbl = document.getElementById('myTableBody'), 
-        row = tbl.insertRow(tbl.rows.length),     
-        i;
+$(document).ready(() => {
+    $('#myTableHeader').each(function(){
+        $(this).append(`<td>1</td>`);
+    })
 
-    for (i = 0; i < tbl.rows[0].cells.length; i++) {
-        createCell(row.insertCell(i));
-    }
+    $('#addColumnChild').click(function(){
+        $('#myTable tr').each(function(){
+          $(this).append(`<td><input></input></td>`);
+        })
 
+        $('#myTableHeader').each(function(){
+            $(this).append('<td>' + ($('#myTableHeader td').length + 1) + '</td>');
+        })
+    });
     
-    if (tbl.rows.length == 1){
-        appendColumn();
-        deleteRows();
-    }
+    $('#addRowChild').click(function(){
+        $('#myTable tbody').append(`<tr>${$('#default-row').html()}</tr>`);
+    });
 
-}
- 
-// create DIV element and append to the table cell
-function createCell(cell) {
-    var div = document.createElement('input'); 
-    cell.appendChild(div)
-}
-
-// create DIV element and append to the table cell
-function createFirstCell(cell) {
-    var nameRows = "TC"
-    var divNameCell = document.createTextNode(nameRows)
-    cell.appendChild(divNameCell)
-}
-
-// append column to the HTML table
-function appendColumn() {
-    var tbl = document.getElementById('myTableBody'), 
-        i;
-    var theadRow = document.getElementById("myTableTheadRow");
-    
-    if (tbl.rows.length == 0) {
-        appendRow();
-    }
-    
-    if (tbl.rows.length > 0) {
-        var numberCell = theadRow.cells.length;
-        var cel = theadRow.insertCell(numberCell);
-        cel.innerHTML = String(numberCell);
-    }
-
-
-    for (i = 0; i < tbl.rows.length; i++) {
-            createCell(tbl.rows[i].insertCell(tbl.rows[i].cells.length));
-        }     
-   
-}
-
-// delete table rows with index greater then 0
-function deleteRows() {
-    var tbl = document.getElementById('myTableBody'), 
-        lastRow = tbl.rows.length - 1,             
-        i;
-    // delete rows with index greater then 0
-    for (i = lastRow; i > 0; i--) {
-        tbl.deleteRow(i);
-    }
-}
- 
-// delete table columns with index greater then 0
-function deleteColumns() {
-    var tbl = document.getElementById('myTableBody'), 
-        lastCol = tbl.rows[0].cells.length - 1,    
-        i, j;
-
-    var theadRow = document.getElementById("myTableTheadRow"),
-        lastColTheadRow = theadRow.cells.length - 1,
-        v;
-
-    // delete cells with index greater then 0 (for each row)
-    for (i = 0; i < tbl.rows.length; i++) {
-        for (j = lastCol; j > 0; j--) {
-            tbl.rows[i].deleteCell(j);
+    $('#removeRow').click(function(){
+        if ($('#myTable tr').length === 1){
+            console.log("I never delete my last friend!!!!!");
+        }else{
+            $('tr:last-child').closest('tr').remove();
         }
-    }
+        
+    });
 
-    for (v = lastColTheadRow; v > 0; v--){
-        theadRow.deleteCell(v)
+    $('#removeColumn').click(function(){
+        if ($('#myTable td').length === 1){
+            console.log("I never delete my last friend!!!!!");
+        }else{
+            $("#myTable th:last-child, #myTable td:last-child").remove();
         }
-}
+    });
+
+    $('#sendData').click(function(){
+        sendData()
+    });
+
+})
+
 
 async function sendData() {
     var myRows = [];
@@ -140,6 +97,18 @@ async function sendData() {
             var divNameCell = document.createTextNode(nameRows)
             cellName.appendChild(divNameCell)
         }  
+
+        const excelDivButton = document.getElementById("download-button")
+        let newDiv = document.createElement("div");
+        const newSpan = document.createElement("span");
+        newDiv.className = "download-button"
+        newDiv.id = "download-response-excel"
+        newDiv.addEventListener("click", download)
+        newSpan.textContent = "Download"
+        newDiv.appendChild(newSpan)
+        excelDivButton.appendChild(newDiv)
+
+
     } catch (error){
         return tWarning.innerHTML = "We dont have orthogonal table which can works on your parameters."
     }
@@ -154,3 +123,10 @@ function myFunction() {
       x.className = x.className.replace(" w3-show", "");
     }
   }
+
+function download(){
+    console.log("hahaha")
+    $("#responseTable").table2excel({
+        filename: "data_to_excel.xls"
+    });
+}

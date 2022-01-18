@@ -112,19 +112,60 @@ h1{
     
 }
 
+/* Input table */
+
 .input-table{
     text-align: center;
     top: 100vh;
     font-family: "Roboto Slab",serif;
 }
+
+.button-menu-table{
+    margin: 0 auto;
+    text-align: center;
+    width: 820px;
+}
+
+.div-menu{
+    width: 110px;
+    float: left;
+    border-style: solid;
+    border-radius: 30px;
+    border-width: 2px;
+    border-color: #65b230;
+    background-color: #65b230;
+    font-weight: 700;
+    font-size: 15px;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    margin: 10px;
+    text-decoration: none;
+    color:white;
+    cursor: pointer;
+}
+
+#myTable{  
+    margin: auto;
+    width: 50%;
+    padding: 2px;
+    border-collapse: collapse;
+    
+}
+
+input {
+    border: 2px solid #0f5591;
+    outline: none;
+    font-family: "Roboto Slab",serif;
+}
+
+/* Result table */
 .result-table{
     text-align: center;
     font-family: "Roboto Slab",serif;
 }
-
-#myTable{  margin: auto;
-    width: 50%;
-    padding: 10px;}
 
 #responseTable{   
     text-align: center;
@@ -137,6 +178,26 @@ h1{
 .list-of-table {
     align-items: center; padding: 10px;
     text-align: center;
+}
+
+.download-button{
+    margin: auto;
+    width: 110px;
+    border-style: solid;
+    border-radius: 30px;
+    border-width: 2px;
+    border-color: #65b230;
+    background-color: #65b230;
+    font-weight: 700;
+    font-size: 15px;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    text-decoration: none;
+    color:white;
+    cursor: pointer;
 }
 
 .footer{
